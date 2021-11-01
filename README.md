@@ -32,7 +32,7 @@ A comparison app - simulare to these examples: [Stack](http://gpuboss.com/compar
 
 ## ERD (Entity Relationship Diagram)
 
-![ERD diagram](blob:https://imgur.com/223172ad-3a6f-4913-8659-03e2d403cacc)
+![ERD diagram](https://i.imgur.com/NpaNwP5.png)
 
 ## Additional Technologies
 
