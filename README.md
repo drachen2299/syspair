@@ -6,7 +6,9 @@ Syspair
 
 ## Project Description
 
-A comparison app - simulare to these examples: [Stack](http://gpuboss.com/compare-gpus), [gmuarena](https://www.gsmarena.com/compare.php3). That will compare technologies i.e. (server envoriments/operating systems/networking infurctructure etc). with programming languages, and their key features, speed, tranferability - and show you the highest rated/or most used in each case.  
+A comparison app - simulare to these examples: [Stack](http://gpuboss.com/compare-gpus), [gmuarena](https://www.gsmarena.com/compare.php3). That will compare technologies i.e. (server envoriments/operating systems/networking infurctructure etc). with programming languages, and their key features, speed, tranferability - and show you the highest rated/or most used in each case.
+
+The user will submit a survey, the date will be aggregated with data on the database(this is optional)
 
 ## Wireframes
 [Whimsical wireframe](https://whimsical.com/syspair-wireframes-MMSPJScxKpcFVhLhnhasDr)
@@ -24,15 +26,19 @@ A comparison app - simulare to these examples: [Stack](http://gpuboss.com/compar
 ![service results desktop](https://i.imgur.com/Bx86YPR.png)
 ![results mobile](https://i.imgur.com/gGKi9i8.png)
 
-
+### CRUD wireframes
+![create survey](https://i.imgur.com/34E4o62.png)
+![survey](https://i.imgur.com/xq8iHQa.png)
+![edit/delete](https://i.imgur.com/3yw8FPs.png)
 
 ## Component Hierarchy
 
-![component hierarchy flowchart](https://i.imgur.com/NVZ1WPg.png)
+![component hierarchy flowchart](https://i.imgur.com/okyHEj3.png)
 
 ## ERD (Entity Relationship Diagram)
 
 ![ERD diagram](https://i.imgur.com/NpaNwP5.png)
+![table relationships](https://i.imgur.com/vIGVGX7.png)
 
 ## Additional Technologies
 
