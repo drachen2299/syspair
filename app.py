@@ -6,12 +6,13 @@ from user import User
 from language import Language
 from country import Country
 from ratings import Ratings
+from type import Type
 
 from resources.languages import language
 from resources.ratings import rating
 from resources.users import user
 from resources.countries import country
-
+from resources.types import type
 DEBUG = True
 PORT = 8000
 
@@ -33,6 +34,7 @@ app.register_blueprint(language)
 app.register_blueprint(rating)
 app.register_blueprint(user)
 app.register_blueprint(country)
+app.register_blueprint(type)
 
 @app.route('/')
 def index():
@@ -40,5 +42,5 @@ def index():
 
 if __name__ == '__main__':
     print(f'App.py is running on port: {PORT}')
-    initialize([User, Language, Ratings, Country])
+    initialize([User, Language, Ratings, Country, Type])
     app.run(debug=DEBUG, port=PORT)

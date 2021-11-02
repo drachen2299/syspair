@@ -1,12 +1,11 @@
-import datetime
+from enum import unique
 from peewee import *
+import datetime
 
-from type import Type
 from db import DATABASE
 
-class Language(Model):
-    name = CharField()
-    type = ForeignKeyField(Type, backref='types')
+class Type(Model):
+    name = CharField(unique=True)
     created_at = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
