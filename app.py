@@ -10,6 +10,7 @@ from ratings import Ratings
 from resources.languages import language
 from resources.ratings import rating
 from resources.users import user
+from resources.countries import country
 
 DEBUG = True
 PORT = 8000
@@ -31,6 +32,7 @@ def after_request(response):
 app.register_blueprint(language)
 app.register_blueprint(rating)
 app.register_blueprint(user)
+app.register_blueprint(country)
 
 @app.route('/')
 def index():
