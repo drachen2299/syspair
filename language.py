@@ -6,7 +6,7 @@ from db import DATABASE
 
 class Language(Model):
     name = CharField()
-    type = ForeignKeyField(Type, backref='types')
+    type_id = ForeignKeyField(Type, backref='types')
     created_at = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
