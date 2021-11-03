@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
+import { surveyResults } from "../../services";
 
 const data = {
   labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -29,6 +30,13 @@ const data = {
 };
 
 export default function Results() {
+  const [survey, setSurvey] = useState([]);
+
+  useEffect(() => {
+    surveyResults().then((fetchedSurvey) => setSurvey(fetchedSurvey))
+
+    console.log(survey)
+  }, [])
   return (
     <div>
       <h2>Bar Example (custom size)</h2>
