@@ -1,5 +1,7 @@
 from re import DEBUG
 from flask import Flask, g
+from flask_cors import CORS
+
 from country import Country
 from db import DATABASE, initialize
 from user import User
@@ -17,7 +19,7 @@ DEBUG = True
 PORT = 8000
 
 app = Flask(__name__)
-
+CORS(app)
 @app.before_request
 def before_request():
     """Connect to the database before each request."""
