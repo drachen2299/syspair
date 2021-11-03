@@ -4,7 +4,7 @@ export default function UserSurvey() {
 
       <div className="flex flex-col items-center h-[800px]">
         <h1 className="font-bold text-6xl">Survey</h1>
-        <button className="bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50 justify-self-center mt-60" onClick={fetchSurvey}>
+        <button className="bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50 justify-self-center mt-60">
           Take the survey!
         </button>
       </div>
