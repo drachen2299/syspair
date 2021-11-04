@@ -24,11 +24,12 @@ def get_single_user(id):
     except:
         return jsonify(message="Resource does not exist!"), 404
 #GET one user by name
-@user.route('/<string:username>', methods=['GET'])
+@user.route('/<username>', methods=['GET'])
 def get_username(username):
     try:
-        user = [model_to_dict(username) for username in User]
-        return jsonify(user), 200
+        user = User.get(User.username == username)
+        user_dict = model_to_dict(user)
+        return jsonify(user_dict), 200
     except DoesNotExist:
         return jsonify(message="Resource does not exist!"), 404
 #PUT by id
