@@ -1,27 +1,33 @@
 import React from "react";
 import Link from 'next/link';
-import router from "next/router";
+import { useRouter } from "next/router";
 import { findUserByName } from "../../services";
 import { useState, useEffect } from "react";
 
 export default function UserResults() {
-  const { username } = router.query;
-  const [user, setUser] = useState([])
-
+  const router = useRouter()
+  const query = Object.keys(router.query);
+  const username = [...query].shift();
+  const [user, setUser] = useState({});
   useEffect(() => {
     findUserByName(username).then((fetchedUser) => setUser(fetchedUser))
-    console.log(user)
   }, [])
+
+  const handleEditClick = (e) => {
+    e.preventDefault()
+    router.push()
+  }
 
   return (
     <div className="flex flex-col w-[600px] mx-auto justify-center text-center">
       <h1 className="text-6xl font-bold">Syspair</h1>
       <h2>Here are your answers:</h2>
       {/* return results of the POST request */}
-      <h3>Language</h3>
-      <h3>Age-Range</h3>
-      <h3>Industry</h3>
-      <h3>Employment Status</h3>
+      <h3>Username: {user.username}</h3>
+      <h3>Language: {user.language_id?.name}</h3>
+      <h3>Age-Range: {user.age_range}</h3>
+      <h3>Industry: {user.industry}</h3>
+      <h3>Employment Status: {user.type_of_dev}</h3>
 
       <p>are you happy with these results?</p>
       <div className=" mt-60">

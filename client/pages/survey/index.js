@@ -43,7 +43,7 @@ export default function UserSurvey() {
             value={languageId}
             onChange={(e) => setLanguageId(e.target.value)}
           >
-            <option value="" disabled selected>Choose a Language</option>
+            <option value="" disabled defaultValue>Choose a Language</option>
             <option value="1">Python</option>
             <option value="2">Ruby</option>
             <option value="3">Java</option>
@@ -56,7 +56,7 @@ export default function UserSurvey() {
             value={ageRange}
             onChange={(e) => setAgeRange(e.target.value)}
           >
-            <option value="" disabled selected>Choose an Age Range</option>
+            <option value="" disabled defaultValue>Choose an Age Range</option>
             <option value="20-40">20-40</option>
             <option value="40-60">40-60</option>
           </select>
@@ -65,7 +65,7 @@ export default function UserSurvey() {
             value={industry}
             onChange={(e) => setIndustry(e.target.value)}
           >
-            <option value="" disabled selected>Choose an Industry</option>
+            <option value="" disabled defaultValue>Choose an Industry</option>
             <option value="Information Technology">
               Information Technology
             </option>
@@ -81,7 +81,7 @@ export default function UserSurvey() {
             value={typeOfDev}
             onChange={(e) => setTypeOfDev(e.target.value)}
           >
-            <option value="" disabled selected>Choose your Dev Type</option>
+            <option value="" disabled defaultValue>Choose your Dev Type</option>
             <option value="enthusiast">Enthusiast</option>
             <option value="professional">Professional</option>
           </select>
