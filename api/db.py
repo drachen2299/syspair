@@ -1,6 +1,11 @@
+import os
 from peewee import PostgresqlDatabase
+from playhouse.db_url import connect
 
-DATABASE = PostgresqlDatabase('syspair_db')
+if 'DATABASE_URL' in os.environ:
+    DATABASE = connect(os.environ.get('DATABASE_URL'))
+else:
+    DATABASE = PostgresqlDatabase('syspair_db')
 
 
 def initialize(tables):

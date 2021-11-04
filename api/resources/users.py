@@ -23,6 +23,14 @@ def get_single_user(id):
         return jsonify(user), 200
     except:
         return jsonify(message="Resource does not exist!"), 404
+#GET one user by name
+@user.route('/<username>', methods=['GET'])
+def get_username(username):
+    try:
+        user = [model_to_dict(username) for username in User]
+        return jsonify(user), 200
+    except DoesNotExist:
+        return jsonify(message="Resource does not exist!"), 404
 #PUT by id
 @user.route('/<int:id>', methods= ['PUT'])
 def update_user(id):
