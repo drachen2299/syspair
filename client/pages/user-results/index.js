@@ -2,6 +2,7 @@ import React from "react";
 import Link from 'next/link';
 
 export default function UserResults() {
+  
   return (
     <div className="flex flex-col w-[600px] mx-auto justify-center text-center">
       <h1 className="text-6xl font-bold">Syspair</h1>

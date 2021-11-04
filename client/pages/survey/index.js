@@ -20,7 +20,7 @@ export default function UserSurvey() {
       type_of_dev: typeOfDev,
     };
     await createSurvey(surveyAnswers);
-    router.push("/user-results");
+    router.push({pathname: "/user-results", query: username});
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
