@@ -1,8 +1,18 @@
 import React from "react";
 import Link from 'next/link';
+import router from "next/router";
+import { findUserByName } from "../../services";
+import { useState, useEffect } from "react";
 
 export default function UserResults() {
-  
+  const { username } = router.query;
+  const [user, setUser] = useState([])
+
+  useEffect(() => {
+    findUserByName(username).then((fetchedUser) => setUser(fetchedUser))
+    console.log(user)
+  }, [])
+
   return (
     <div className="flex flex-col w-[600px] mx-auto justify-center text-center">
       <h1 className="text-6xl font-bold">Syspair</h1>

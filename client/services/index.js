@@ -24,9 +24,9 @@ export const surveyResults = async () => {
   }
 }
 
-export const findUserByName = async (user) => {
+export const findUserByName = async (username) => {
   try {
-    const response = await axios.get(`${apiURL}/api/v1/users/`);
+    const response = await axios.get(`${apiURL}/api/v1/users/`, username);
     return response.data;
   } catch (error) {
     console.log(error.message);
