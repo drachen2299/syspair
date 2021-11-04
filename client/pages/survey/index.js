@@ -13,13 +13,13 @@ export default function UserSurvey() {
           <label htmlFor="username">Username:</label>
           <input className="inline-block" type="text" placeholder="username"/>
           <h3>language:</h3>
-          <select id="programming-languages">
-            <option value="python">Python</option>
-            <option value="ruby">Ruby</option>
-            <option value="java">Java</option>
-            <option value="javascript">Javascript</option>
-            <option value="c#">C#</option>
-            <option value="rust">Rust</option>
+          <select id="languages">
+            <option value="1">Python</option>
+            <option value="2">Ruby</option>
+            <option value="3">Java</option>
+            <option value="4">Javascript</option>
+            <option value="5">C#</option>
+            <option value="6">Rust</option>
           </select>
           <h3>Age-Range:</h3>
           <select name="age-range" id="age-range">
