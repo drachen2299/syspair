@@ -24,10 +24,9 @@ export const surveyResults = async () => {
   }
 }
 
-export const createUser = async (surveyAnswers) => {
+export const createSurvey = async (surveyAnswers) => {
   try {
     const response = await axios.post(`${apiURL}/api/v1/users/`, surveyAnswers);
-    return response.data;
   } catch (error) {
     console.error(error.message);
   }
