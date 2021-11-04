@@ -41,7 +41,7 @@ export default function UserSurvey() {
             <option value="enthusiast">Enthusiast</option>
             <option value="professional">Professional</option>
           </select>
-          <Link href="/results" passHref>
+          <Link href="/user-results" passHref>
           <button className="bg-purple-600 text-3xl col-span-2 rounded-md box-border p-2 text-gray-50 justify-self-center mt-60" onClick={handleClick}>
             Submit Survey
           </button>
