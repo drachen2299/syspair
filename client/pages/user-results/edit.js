@@ -3,17 +3,17 @@ import { useState, useEffect } from 'react';
 import { findUserByName } from '../../services';
 
 export default function Edit() {
-  const [username, setUsername] = useState("");
+  const router = useRouter()
+  const query = Object.keys(router.query);
+  const username = [...query].shift();
+  const [usersName, setUsersName] = useState("");
   const [ageRange, setAgeRange] = useState("");
   const [industry, setIndustry] = useState("");
   const [languageId, setLanguageId] = useState("");
   const [typeOfDev, setTypeOfDev] = useState("");
-  const router = useRouter()
-  const query = Object.keys(router.query);
-  const usersUserName = [...query].shift();
   const [user, setUser] = useState({});
   useEffect(() => {
-    findUserByName(usersUserName).then((fetchedUser) => setUser(fetchedUser))
+    findUserByName(username).then((fetchedUser) => setUser(fetchedUser))
   }, [])
 
 
@@ -21,7 +21,7 @@ export default function Edit() {
     e.preventDefault()
     const id = user.id;
     const editSurvey = {
-      username,
+      username: usersName,
       age_range: ageRange,
       industry,
       language_id: parseInt(languageId, 10),
@@ -42,10 +42,10 @@ export default function Edit() {
           <input
             className="inline-block"
             defaultValue={user.username}
-            value={username}
+            value={usersName}
             type="text"
             placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsersName(e.target.value)}
           />
           <h3>language:</h3>
           <select
