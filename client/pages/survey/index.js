@@ -2,19 +2,17 @@ import Link from "next/link";
 import { createSurvey } from "../../services";
 import { useState } from "react";
 import { useRouter } from "next/router";
-const preventDefault = f => e => {
-  e.preventDefault()
-  f(e)
-}
+
 export default function UserSurvey() {
   
   const router = useRouter();
-  const [username, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [ageRange, setAgeRange] = useState("");
   const [industry, setIndustry] = useState("");
-  const [languageId, setLanguageId] = useState(0);
+  const [languageId, setLanguageId] = useState("");
   const [typeOfDev, setTypeOfDev] = useState("");
-  const handleSubmit = preventDefault(async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const surveyAnswers = {
       username,
       age_range: ageRange,
@@ -24,7 +22,7 @@ export default function UserSurvey() {
     };
     await createSurvey(surveyAnswers);
     router.push('/user-results');
-  });
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="flex flex-col items-center h-[800px]">
@@ -34,9 +32,9 @@ export default function UserSurvey() {
           onSubmit={handleSubmit}
         >
           <label htmlFor="username">Username:</label>
-          <input className="inline-block" type="text" placeholder="username" />
+          <input className="inline-block" value={username} type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
           <h3>language:</h3>
-          <select onChange={(e) => setLanguageId(parseInt(e.target.value, 10))}>
+          <select value={languageId} onChange={(e) => setLanguageId(e.target.valueAsNumber(value))}>
             <option value="1">Python</option>
             <option value="2">Ruby</option>
             <option value="3">Java</option>
@@ -45,12 +43,12 @@ export default function UserSurvey() {
             <option value="6">Rust</option>
           </select>
           <h3>Age-Range:</h3>
-          <select name="age-range" id="age-range">
+          <select value={ageRange} onChange={(e) => setAgeRange(e.target.value)}>
             <option value="20-40">20-40</option>
             <option value="40-60">40-60</option>
           </select>
           <h3>Industry:</h3>
-          <select name="industry" id="industry">
+          <select value={industry} onChange={(e) => setIndustry(e.target.value)}>
             <option value="Information Technology">
               Information Technology
             </option>
@@ -62,7 +60,7 @@ export default function UserSurvey() {
             <option value="other">Other</option>
           </select>
           <h3>Employment Status:</h3>
-          <select name="employment status" id="employment status">
+          <select value={typeOfDev} onChange={(e) => setTypeOfDev(e.target.value)}>
             <option value="enthusiast">Enthusiast</option>
             <option value="professional">Professional</option>
           </select>
