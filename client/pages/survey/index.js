@@ -31,7 +31,7 @@ export default function UserSurvey() {
             <option value="information technology">Information Technology</option>
             <option value="data science">Data Science</option>
             <option value="Industrial">Industrial/Mechanical</option>
-            <option value="Service">Service</option>
+            <option value="Services">Services</option>
             <option value="health care">Health Care</option>
             <option value="student">Student</option>
             <option value="other">Other</option>

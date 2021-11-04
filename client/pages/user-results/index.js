@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 
 export default function UserResults() {
   return (
@@ -13,9 +14,17 @@ export default function UserResults() {
 
       <p>are you happy with these results?</p>
       <div className=" mt-60">
-        <button className="m-2 bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50">Edit</button>
-        <button className="m-2 bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50">Delete</button>
-        <button className="m-2 bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50">Continue</button>
+        <button className="m-2 bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50">
+          Edit
+        </button>
+        <button className="m-2 bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50">
+          Delete
+        </button>
+        <Link href="/results">
+          <button className="m-2 bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50">
+            Continue
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ export const defaultRoute = async () => {
 
 export const surveyResults = async () => {
   try {
-    const response = await axios.get(`${apiURL}/api/v1/languages`);
+    const response = await axios.get(`${apiURL}/api/v1/users/`);
     return response.data;
   } catch (error) {
     console.error(error.message);
@@ -33,40 +33,10 @@ export const createSurvey = async (surveyAnswers) => {
   }
 }
 
-// create a login function that takes in userInfo and returns the output of the /auth/login endpoint
-export const login = async (userInfo) => {
-  try {
-    const response = await axios.post(`${apiURL}/auth/login`, userInfo);
-    return response.data;
-  } catch (error) {
-    console.error(error.message);
-  }
-}
-
-// logout does not need parameters (why?)
-export const logout = async () => {
-  try {
-    await axios.get(`${apiURL}/auth/logout`);
-  } catch (error) {
-    console.error(error.message);
-  }
-}
-
-// an exportable async function that gets all cartoons (apiURL/cartoons/)
-export const getAllCartoons = async () => {
-  try {
-    const response = await axios.get(`${apiURL}/cartoons/`);
-    return response.data;
-  } catch (error) {
-    console.error(error.message);
-  }
-}
-
-// called createCartoon or some name like that it should take in info on a new cartoon and use it for the data on a axios.post request to our POST /cartoons/ endpoint
-export const createCartoon = async (newCartoon) => {
-  try {
-    await axios.post(`${apiURL}/cartoons/`, newCartoon);
-  } catch (error) {
-    console.error(error.message);
-  }
-}
+// export const deleteComment = async (id) => {
+//   try {
+//     await axios.delete(`${apiURL}/api/comments/${id}`);
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// };

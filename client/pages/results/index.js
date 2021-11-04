@@ -35,8 +35,9 @@ export default function Results() {
   useEffect(() => {
     surveyResults().then((fetchedSurvey) => setSurvey(fetchedSurvey))
 
-    console.log(survey)
+    
   }, [])
+  console.log(survey)
   return (
     <div>
       <h2>Bar Example (custom size)</h2>
