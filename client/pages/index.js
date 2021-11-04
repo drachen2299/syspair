@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Nav from '../components/Nav';
 
 export default function Home() {
   return (
     <>
+    <Nav />
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
         <title>Syspair</title>
@@ -14,7 +16,7 @@ export default function Home() {
           Welcome to{' '}
           Syspair
         </h1>
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
+        <div className="items-center justify-center max-w-4xl mt-6 sm:w-full">
           <h3>take the survey!</h3>
           <Link href="/survey" passHref>
           <button className="bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50 justify-self-center mt-60">

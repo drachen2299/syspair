@@ -3,8 +3,8 @@ import Link from 'next/link'
 export default function Nav() {
   return (
     <nav>
-      <Link>Data</Link>
-      <Link>About</Link>
+      <Link href="#">Data</Link>
+      <Link href="#">About</Link>
     </nav>
   );
 };

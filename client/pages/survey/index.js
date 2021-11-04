@@ -17,7 +17,7 @@ export default function UserSurvey() {
       username,
       age_range: ageRange,
       industry,
-      language_id: languageId,
+      language_id: parseInt(languageId, 10),
       type_of_dev: typeOfDev,
     };
     await createSurvey(surveyAnswers);
@@ -34,7 +34,7 @@ export default function UserSurvey() {
           <label htmlFor="username">Username:</label>
           <input className="inline-block" value={username} type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
           <h3>language:</h3>
-          <select value={languageId} onChange={(e) => setLanguageId(e.target.valueAsNumber(value))}>
+          <select value={languageId} onChange={(e) => setLanguageId(e.target.value)}>
             <option value="1">Python</option>
             <option value="2">Ruby</option>
             <option value="3">Java</option>
