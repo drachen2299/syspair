@@ -15,10 +15,11 @@ export default function UserResults() {
 
   const handleEditClick = (e) => {
     e.preventDefault()
-    router.push()
+    router.push({pathname: "/user-survey/edit", query: username});
   }
 
   return (
+    <>
     <div className="flex flex-col w-[600px] mx-auto justify-center text-center">
       <h1 className="text-6xl font-bold">Syspair</h1>
       <h2>Here are your answers:</h2>
@@ -31,7 +32,7 @@ export default function UserResults() {
 
       <p>are you happy with these results?</p>
       <div className=" mt-60">
-        <button className="m-2 bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50">
+        <button className="m-2 bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50" onClick={handleEditClick}>
           Edit
         </button>
         <button className="m-2 bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50">
@@ -44,5 +45,7 @@ export default function UserResults() {
         </Link>
       </div>
     </div>
+    <Edit user={user}/>
+    </>
   );
 }

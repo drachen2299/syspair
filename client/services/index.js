@@ -41,6 +41,14 @@ export const createSurvey = async (surveyAnswers) => {
   }
 }
 
+export const editUserSurvey = async (id, editSurvey) => {
+  try {
+    await axios.put(`${apiURL}/api/v1/users/${id}`, editSurvey);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
 // export const deleteComment = async (id) => {
 //   try {
 //     await axios.delete(`${apiURL}/api/comments/${id}`);
