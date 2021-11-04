@@ -6,7 +6,7 @@ from db import DATABASE
 
 class Language(Model):
     name = CharField()
-    year_created = CharField()
+    year_created = IntegerField()
     author = CharField()
     type = CharField()
     image = CharField()
