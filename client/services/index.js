@@ -35,7 +35,7 @@ export const findUserByName = async (username) => {
 
 export const createSurvey = async (surveyAnswers) => {
   try {
-    const response = await axios.post(`${apiURL}/api/v1/users`, surveyAnswers);
+    const response = await axios.post(`${apiURL}/api/v1/users/`, surveyAnswers);
   } catch (error) {
     console.error(error.message);
   }

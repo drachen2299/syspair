@@ -1,17 +1,25 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import { findUserByName } from '../../services';
 
-export default function index(props) {
+export default function Edit() {
   const [username, setUsername] = useState("");
   const [ageRange, setAgeRange] = useState("");
   const [industry, setIndustry] = useState("");
   const [languageId, setLanguageId] = useState("");
   const [typeOfDev, setTypeOfDev] = useState("");
-  const { id } = props.user;
+  const router = useRouter()
+  const query = Object.keys(router.query);
+  const usersUserName = [...query].shift();
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    findUserByName(usersUserName).then((fetchedUser) => setUser(fetchedUser))
+  }, [])
 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const id = user.id;
     const editSurvey = {
       username,
       age_range: ageRange,
@@ -19,7 +27,7 @@ export default function index(props) {
       language_id: parseInt(languageId, 10),
       type_of_dev: typeOfDev,
     };
-    await editUserSurvey(id, editSurvey)
+    await editUserSurvey(id, editSurvey);
 
   }
   return (
@@ -33,14 +41,16 @@ export default function index(props) {
           <label htmlFor="username">Username:</label>
           <input
             className="inline-block"
-            value={props.username}
+            defaultValue={user.username}
+            value={username}
             type="text"
             placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
           />
           <h3>language:</h3>
           <select
-            value={props.language_id}
+            value={languageId}
+            defaultValue={user.language_id}
             onChange={(e) => setLanguageId(e.target.value)}
           >
             <option value="" disabled defaultValue>Choose a Language</option>
@@ -53,7 +63,9 @@ export default function index(props) {
           </select>
           <h3>Age-Range:</h3>
           <select
-            value={props.age_range}
+          
+            defaultValue={user.age_range}
+            value={ageRange}
             onChange={(e) => setAgeRange(e.target.value)}
           >
             <option value="" disabled defaultValue>Choose an Age Range</option>
@@ -62,7 +74,8 @@ export default function index(props) {
           </select>
           <h3>Industry:</h3>
           <select
-            value={props.industry}
+            defaultValue={user.industry}
+            value={industry}
             onChange={(e) => setIndustry(e.target.value)}
           >
             <option value="" disabled defaultValue>Choose an Industry</option>
@@ -78,7 +91,8 @@ export default function index(props) {
           </select>
           <h3>Employment Status:</h3>
           <select
-            value={props.type_of_dev}
+            defaultValue={user.type_of_dev}
+            value={typeOfDev}
             onChange={(e) => setTypeOfDev(e.target.value)}
           >
             <option value="" disabled defaultValue>Choose your Dev Type</option>

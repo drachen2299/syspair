@@ -1,8 +1,8 @@
-import React from "react";
 import Link from 'next/link';
 import { useRouter } from "next/router";
 import { findUserByName } from "../../services";
 import { useState, useEffect } from "react";
+import Edit from './edit';
 
 export default function UserResults() {
   const router = useRouter()
@@ -15,16 +15,16 @@ export default function UserResults() {
 
   const handleEditClick = (e) => {
     e.preventDefault()
-    router.push({pathname: "/user-survey/edit", query: username});
+    router.push({pathname: "/user-results/edit", query: username})
   }
-
+  console.log(user)
   return (
-    <>
+
     <div className="flex flex-col w-[600px] mx-auto justify-center text-center">
       <h1 className="text-6xl font-bold">Syspair</h1>
       <h2>Here are your answers:</h2>
-      {/* return results of the POST request */}
-      <h3>Username: {user.username}</h3>
+      {/*return results of the POST request */}
+       <h3>Username: {user.username}</h3>
       <h3>Language: {user.language_id?.name}</h3>
       <h3>Age-Range: {user.age_range}</h3>
       <h3>Industry: {user.industry}</h3>
@@ -45,7 +45,5 @@ export default function UserResults() {
         </Link>
       </div>
     </div>
-    <Edit user={user}/>
-    </>
   );
 }
