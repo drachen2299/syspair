@@ -53,3 +53,10 @@ def create_user():
     user_dict = model_to_dict(user)
     return jsonify(user_dict), 201
     
+@user.route('/<int:id>', methods=['DELETE'])
+def delete_user(id):
+    (User
+        .delete()
+        .where(User.id == id)
+        .execute())
+    return jsonify(message="User Survey Deleted!"), 204

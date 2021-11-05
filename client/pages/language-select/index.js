@@ -6,9 +6,14 @@ export default function LanguageSelect() {
   const query = Object.keys(router.query);
   const username = [...query].shift();
   const [user, setUser] = useState({});
+  const [languages, setLanguages] = useState([]);
   useEffect(() => {
     findUserByName(username).then((fetchedUser) => setUser(fetchedUser));
   }, []);
+
+  useEffect(async () => {
+    
+  }, [])
   // call all languages from language
   // store user.language_id
   // if user.language_id in languages only return the other languages and store them in var

@@ -48,7 +48,13 @@ export const editUserSurvey = async (id, editSurvey) => {
     console.log(error.message);
   }
 }
-
+export const deleteUser = async (id) => {
+  try {
+    await axios.delete(`${apiURL}/api/v1/users/${id}`);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
 // export const deleteComment = async (id) => {
 //   try {
 //     await axios.delete(`${apiURL}/api/comments/${id}`);
