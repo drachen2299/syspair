@@ -36,8 +36,8 @@ def get_username(username):
 @user.route('/<int:id>', methods= ['PUT'])
 def update_user(id):
     body = request.get_json()
-    if (id != User.id):
-        return jsonify(message="Resource does not exist!"), 404
+    # if (user.id != User.id):
+    #     return jsonify(message="Resource does not exist!"), 404
     (User
         .update(**body)
         .where(User.id == id)

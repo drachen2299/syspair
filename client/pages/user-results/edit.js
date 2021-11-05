@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
-import { findUserByName } from '../../services';
+import { useRouter, useParams } from "next/router";
+import { useState, useEffect } from "react";
+import { findUserByName, editUserSurvey } from "../../services";
 
 export default function Edit() {
-  const router = useRouter()
+  const router = useRouter();
   const query = Object.keys(router.query);
   const username = [...query].shift();
   const [usersName, setUsersName] = useState("");
@@ -12,13 +12,19 @@ export default function Edit() {
   const [languageId, setLanguageId] = useState("");
   const [typeOfDev, setTypeOfDev] = useState("");
   const [user, setUser] = useState({});
-  useEffect(() => {
-    findUserByName(username).then((fetchedUser) => setUser(fetchedUser))
-  }, [])
 
+  useEffect(async () => {
+    await findUserByName(username)
+    .then((fetchedUser) => setUser(fetchedUser));
+    setUsersName(user.username);
+    setAgeRange(user.age_range);
+    setIndustry(user.industry);
+    setLanguageId(user.language_id?.id.toString());
+    setTypeOfDev(user.type_of_dev);
+  }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const id = user.id;
     const editSurvey = {
       username: usersName,
@@ -28,10 +34,10 @@ export default function Edit() {
       type_of_dev: typeOfDev,
     };
     await editUserSurvey(id, editSurvey);
-
-  }
+    router.push({pathname: '/user-results', query: username});
+  };
   return (
-  <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="flex flex-col items-center h-[800px]">
         <h1 className="font-bold text-6xl">Survey</h1>
         <form
@@ -41,8 +47,7 @@ export default function Edit() {
           <label htmlFor="username">Username:</label>
           <input
             className="inline-block"
-            defaultValue={user.username}
-            value={usersName}
+            value={usersName || ''}
             type="text"
             placeholder="username"
             onChange={(e) => setUsersName(e.target.value)}
@@ -50,10 +55,11 @@ export default function Edit() {
           <h3>language:</h3>
           <select
             value={languageId}
-            defaultValue={user.language_id}
             onChange={(e) => setLanguageId(e.target.value)}
           >
-            <option value="" disabled defaultValue>Choose a Language</option>
+            <option value="" disabled defaultValue>
+              Choose a Language
+            </option>
             <option value="1">Python</option>
             <option value="2">Ruby</option>
             <option value="3">Java</option>
@@ -63,22 +69,23 @@ export default function Edit() {
           </select>
           <h3>Age-Range:</h3>
           <select
-          
-            defaultValue={user.age_range}
             value={ageRange}
             onChange={(e) => setAgeRange(e.target.value)}
           >
-            <option value="" disabled defaultValue>Choose an Age Range</option>
+            <option value="" disabled defaultValue>
+              Choose an Age Range
+            </option>
             <option value="20-40">20-40</option>
             <option value="40-60">40-60</option>
           </select>
           <h3>Industry:</h3>
           <select
-            defaultValue={user.industry}
             value={industry}
             onChange={(e) => setIndustry(e.target.value)}
           >
-            <option value="" disabled defaultValue>Choose an Industry</option>
+            <option value="" disabled defaultValue>
+              Choose an Industry
+            </option>
             <option value="Information Technology">
               Information Technology
             </option>
@@ -91,11 +98,12 @@ export default function Edit() {
           </select>
           <h3>Employment Status:</h3>
           <select
-            defaultValue={user.type_of_dev}
             value={typeOfDev}
             onChange={(e) => setTypeOfDev(e.target.value)}
           >
-            <option value="" disabled defaultValue>Choose your Dev Type</option>
+            <option value="" disabled defaultValue>
+              Choose your Dev Type
+            </option>
             <option value="enthusiast">Enthusiast</option>
             <option value="professional">Professional</option>
           </select>
@@ -110,4 +118,4 @@ export default function Edit() {
       </div>
     </div>
   );
-};
+}
