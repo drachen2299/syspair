@@ -27,10 +27,11 @@ export default function LanguageSelect() {
     <div>
       <form>
         <select value='languages' id="languages">
-          {languages.map((language) => {
-            //console.log(language.name);
-            <option value={language.id}>{language.name}</option>
-          })}
+          {languages.map(language => 
+            
+            <option value={language.id} >{language.name}</option>
+            
+          )}
         </select>
       </form>
     </div>
