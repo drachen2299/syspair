@@ -9,10 +9,14 @@ export default function LanguageSelect() {
   useEffect(() => {
     findUserByName(username).then((fetchedUser) => setUser(fetchedUser));
   }, []);
-  
+  // call all languages from language
+  // store user.language_id
+  // if user.language_id in languages only return the other languages and store them in var
+  // populate the remaining as option dropdowns 
+
   return (
     <div>
-      
+      {/* populate the languages that are not language_id as option dropdown onChange store the selected language as the value and then onSubmit add the selected language as an aditional router query */}
     </div>
   );
 };
