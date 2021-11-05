@@ -12,10 +12,12 @@ export default function LanguageSelect() {
     await findUserByName(username).then((fetchedUser) => setUser(fetchedUser));
 
     await getAllLanguages().then((fetchedLang) => setLanguages(fetchedLang));
-
+    // const results = languages.filter(language => user.language_id?.id === language?.id);
+    
   }, []);
 
-  console.log(user.language_id)
+  console.log(user.language_id?.id)
+  console.log([...languages])
   // call all languages from language
   // store user.language_id
   // if user.language_id in languages only return the other languages and store them in var
@@ -23,7 +25,14 @@ export default function LanguageSelect() {
 
   return (
     <div>
-      {/* populate the languages that are not language_id as option dropdown onChange store the selected language as the value and then onSubmit add the selected language as an aditional router query */}
+      <form>
+        <select value='languages' id="languages">
+          {languages.map((language) => {
+            //console.log(language.name);
+            <option value={language.id}>{language.name}</option>
+          })}
+        </select>
+      </form>
     </div>
   );
 };
