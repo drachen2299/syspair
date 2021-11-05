@@ -1,13 +1,13 @@
 import datetime
 from peewee import *
 
-
+from author import Author
 from db import DATABASE
 
 class Language(Model):
     name = CharField()
     year_created = IntegerField()
-    author = CharField()
+    author_id = ForeignKeyField(Author, backref='authors')
     type = CharField()
     image = CharField()
 

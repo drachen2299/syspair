@@ -7,10 +7,12 @@ import os
 from db import DATABASE, initialize
 from user import User
 from language import Language
+from author import Author
 
 
 from resources.languages import language
 from resources.users import user
+from resources.authors import author
 DEBUG = True
 PORT = 8000
 
