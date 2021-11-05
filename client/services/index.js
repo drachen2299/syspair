@@ -15,6 +15,7 @@ export const defaultRoute = async () => {
   }
 }
 
+// GET all users
 export const surveyResults = async () => {
   try {
     const response = await axios.get(`${apiURL}/api/v1/users/`);
@@ -24,6 +25,26 @@ export const surveyResults = async () => {
   }
 }
 
+// GET languages
+export const getAllLanguages = async () => {
+  try {
+    const response = await axios.get(`${apiURL}/api/v1/languages`)
+    return response.data;
+  } catch (error) {
+    console.error(error.message)
+  }
+}
+// GET language by id
+export const findLanguageById = async (langId) => {
+  try {
+    const response = await axios.get(`${apiURL}/api/v1/languages/${langId}`)
+    return response.data;
+  } catch (error) {
+    console.error(error.message)
+  }
+}
+
+// GET user by username
 export const findUserByName = async (username) => {
   try {
     const response = await axios.get(`${apiURL}/api/v1/users/${username}`);
@@ -33,6 +54,7 @@ export const findUserByName = async (username) => {
   }
 }
 
+// POST user survey
 export const createSurvey = async (surveyAnswers) => {
   try {
     const response = await axios.post(`${apiURL}/api/v1/users/`, surveyAnswers);
@@ -41,6 +63,7 @@ export const createSurvey = async (surveyAnswers) => {
   }
 }
 
+// PUT user survey
 export const editUserSurvey = async (id, editSurvey) => {
   try {
     await axios.put(`${apiURL}/api/v1/users/${id}`, editSurvey);
@@ -48,6 +71,8 @@ export const editUserSurvey = async (id, editSurvey) => {
     console.log(error.message);
   }
 }
+
+// DELETE user survey
 export const deleteUser = async (id) => {
   try {
     await axios.delete(`${apiURL}/api/v1/users/${id}`);
@@ -55,10 +80,3 @@ export const deleteUser = async (id) => {
     console.log(error.message);
   }
 }
-// export const deleteComment = async (id) => {
-//   try {
-//     await axios.delete(`${apiURL}/api/comments/${id}`);
-//   } catch (error) {
-//     console.error(error.message);
-//   }
-// };

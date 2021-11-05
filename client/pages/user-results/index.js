@@ -49,7 +49,7 @@ export default function UserResults() {
         </button>
 
         <button className="m-2 bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50"
-        onClick={(e) => e.preventDefault(router.push({pathname: '/results', query: username}))}>
+        onClick={(e) => e.preventDefault(router.push({pathname: '/language-select', query: username}))}>
           Continue
         </button>
       </div>

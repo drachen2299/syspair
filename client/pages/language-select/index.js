@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { findUserByName, getAllLanguages } from '../../services';
 
 export default function LanguageSelect() {
   const router = useRouter()
@@ -7,13 +8,14 @@ export default function LanguageSelect() {
   const username = [...query].shift();
   const [user, setUser] = useState({});
   const [languages, setLanguages] = useState([]);
-  useEffect(() => {
-    findUserByName(username).then((fetchedUser) => setUser(fetchedUser));
+  useEffect(async () => {
+    await findUserByName(username).then((fetchedUser) => setUser(fetchedUser));
+
+    await getAllLanguages().then((fetchedLang) => setLanguages(fetchedLang));
+
   }, []);
 
-  useEffect(async () => {
-    
-  }, [])
+  console.log(user.language_id)
   // call all languages from language
   // store user.language_id
   // if user.language_id in languages only return the other languages and store them in var
