@@ -40,10 +40,11 @@ def index():
 
 app.register_blueprint(user)
 app.register_blueprint(language)
+app.register_blueprint(author)
 origins=['http://localhost:3000']
 
 if 'DATABASE_URL' in os.environ:
-    initialize([User, Language])
+    initialize([User, Language, Author])
     app.config['SESSION_COOKIE_SECURE'] = True
     app.config['SESSION_COOKIE_HTTPONLY'] = False
     app.config['SESSION_COOKIE_SAMESITE'] = 'None'
@@ -53,5 +54,5 @@ CORS(app, origins=origins, supports_credentials=True)
 
 if __name__ == '__main__':
     print(f'App.py is running on port: {PORT}')
-    initialize([User, Language])
+    initialize([User, Language, Author])
     app.run(debug=DEBUG, port=PORT)
