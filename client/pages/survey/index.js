@@ -25,22 +25,9 @@ export default function UserSurvey() {
       type_of_dev: typeOfDev,
     };
     await createSurvey(surveyAnswers);
-    router.push("/user-results");
+    usersName = username;
+    router.push("/");
   };
-  useEffect(async () => {
-    if (usersName) {
-
-      await findUserByName(usersName)
-      .then((fetchedUser) => setUserData(fetchedUser));
-      setUsername(userData.username);
-      setAgeRange(userData.age_range);
-      setIndustry(userData.industry);
-      setLanguageId(userData.language_id?.id.toString());
-      setTypeOfDev(userData.type_of_dev);
-    } else {
-      return null
-    }
-  }, []);
 
   const handleEdit = async (e) => {
     e.preventDefault();
