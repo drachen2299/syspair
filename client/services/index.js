@@ -45,9 +45,9 @@ export const findLanguageById = async (langId) => {
 }
 
 // GET user by username
-export const findUserByName = async (username) => {
+export const findUserByName = async (usersName) => {
   try {
-    const response = await axios.get(`${apiURL}/api/v1/users/${username}`);
+    const response = await axios.get(`${apiURL}/api/v1/users/${usersName}`);
     return response.data;
   } catch (error) {
     console.log(error.message);

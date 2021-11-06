@@ -1,10 +1,15 @@
 import Link from "next/link";
-import { createSurvey } from "../../services";
-import { useState } from "react";
+import { createSurvey, findUserByName } from "../../services";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import { userContext } from "../../lib/context";
+
 
 export default function UserSurvey() {
+  const { usersName } = useContext(userContext);
   const router = useRouter();
+  const [userData, setUserData] = useState({});
   const [username, setUsername] = useState("");
   const [ageRange, setAgeRange] = useState("");
   const [industry, setIndustry] = useState("");
@@ -20,16 +25,44 @@ export default function UserSurvey() {
       type_of_dev: typeOfDev,
     };
     await createSurvey(surveyAnswers);
-    router.push({pathname: "/user-results", query: username});
+    router.push("/user-results");
+  };
+  useEffect(async () => {
+    if (usersName) {
+
+      await findUserByName(usersName)
+      .then((fetchedUser) => setUserData(fetchedUser));
+      setUsername(userData.username);
+      setAgeRange(userData.age_range);
+      setIndustry(userData.industry);
+      setLanguageId(userData.language_id?.id.toString());
+      setTypeOfDev(userData.type_of_dev);
+    } else {
+      return null
+    }
+  }, []);
+
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    const id = userData.id;
+    const editSurvey = {
+      username: usersName,
+      age_range: ageRange,
+      industry,
+      language_id: parseInt(languageId, 10),
+      type_of_dev: typeOfDev,
+    };
+    await editUserSurvey(id, editSurvey);
+    router.push({pathname: '/user-results', query: username});
   };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen"> 
       <div className="flex flex-col items-center h-[800px]">
-        <h1 className="font-bold text-6xl">Survey</h1>
+        <h1 className="font-bold text-6xl">{{usersName} ? 'Edit Survey' : 'Create Survey'}</h1>
         <form
           className="grid grid-cols-2 gap-2 w-[600px] mx-auto mt-[100px]"
-          onSubmit={handleSubmit}
-        >
+          onSubmit={{usersName}? handleSubmit : handleEdit}
+          >
           <label htmlFor="username">Username:</label>
           <input
             className="inline-block"
@@ -37,7 +70,7 @@ export default function UserSurvey() {
             type="text"
             placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
-          />
+            />
           <h3>language:</h3>
           <select
             value={languageId}
@@ -90,7 +123,7 @@ export default function UserSurvey() {
             className="bg-purple-600 text-3xl col-span-2 rounded-md box-border p-2 text-gray-50 justify-self-center mt-60"
             type="submit"
           >
-            Submit Survey
+            {{usersName} ? "Edit Survey" : "Submit Survey"}
           </button>
         </form>
       </div>

@@ -4,7 +4,7 @@ import Nav from '../components/Nav';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <userContext.Provider value={{ username: "ben" }}>
+    <userContext.Provider value={{ usersName: "ben" }}>
       <Nav />
       <Component {...pageProps} />
     </userContext.Provider>
