@@ -10,11 +10,12 @@ export default function UserSurvey() {
   const { usersName } = useContext(userContext);
   const router = useRouter();
   const [userData, setUserData] = useState({});
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(null);
   const [ageRange, setAgeRange] = useState("");
   const [industry, setIndustry] = useState("");
   const [languageId, setLanguageId] = useState("");
   const [typeOfDev, setTypeOfDev] = useState("");
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const surveyAnswers = {
