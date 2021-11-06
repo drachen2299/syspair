@@ -1,11 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Nav from '../components/Nav';
 
 export default function Home() {
   return (
     <>
-    <Nav />
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
         <title>Syspair</title>
