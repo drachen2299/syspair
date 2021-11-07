@@ -38,6 +38,7 @@ export default function Results() {
   const compareLang = query[1];
   const [usersName, setUsersName] = useState(null);
   const [selectedLang, setSelectedLang] = useState({});
+  console.log(username)
   useEffect(async () => {
     //await surveyResults().then((fetchedSurvey) => setSurvey(fetchedSurvey));
     await findUserByName(username).then((fetchedName) => setUsersName(fetchedName));
@@ -52,7 +53,7 @@ export default function Results() {
         <div className="col-start-1 col-end-2 w-[45%]">
           <div>
             {/* users language language */}
-            <img className="w-9/12" src={usersName?.language_id?.image} alt={usersName.language_id?.image} />
+            <img className="w-9/12" src={usersName?.language_id?.image} alt={usersName?.language_id?.image} />
           </div>
           <div className="inline-block">
             <Bar

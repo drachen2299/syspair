@@ -50,4 +50,3 @@ def create_language():
     language = Language.create(**body)
     language_dict = model_to_dict(language)
     return jsonify(language_dict), 201
-    

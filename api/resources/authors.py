@@ -42,4 +42,3 @@ def create_author():
     author = Author.create(**body)
     author_dict = model_to_dict(author)
     return jsonify(author_dict), 201
-    

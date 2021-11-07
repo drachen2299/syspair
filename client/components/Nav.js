@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { useContext } from "react";
-import { userContext } from "../lib/context";
-export default function Nav() {
-  const { usersName } = useContext(userContext);
 
+export default function Nav() {
+  const username = null;
   return (
     <nav>
       <ul>
@@ -12,21 +10,19 @@ export default function Nav() {
             <button>Home</button>
           </Link>
         </li>
-        {usersName && (
+        {username && (
           <>
-            <li>
-              <Link href={`/${usersName}`}>
-                <button>User Survey</button>
-              </Link>
-            </li>
+            <li></li>
+            <li></li>
           </>
         )}
-        {!usersName && (
-        <li>
-          <Link href="/enter">
-            <button>Login</button>
-          </Link>
-        </li>)}
+        {!username && (
+          <li>
+            <Link href="/survey">
+              <button>Survey</button>
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

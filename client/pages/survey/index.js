@@ -1,21 +1,15 @@
 import Link from "next/link";
-import { createSurvey, findUserByName } from "../../services";
-import { useState, useEffect } from "react";
+import { createSurvey } from "../../services";
+import { useState } from "react";
 import { useRouter } from "next/router";
-import { useContext } from "react";
-import { userContext } from "../../lib/context";
-
 
 export default function UserSurvey() {
-  const { usersName } = useContext(userContext);
   const router = useRouter();
-  const [userData, setUserData] = useState({});
-  const [username, setUsername] = useState(null);
+  const [username, setUsername] = useState("");
   const [ageRange, setAgeRange] = useState("");
   const [industry, setIndustry] = useState("");
   const [languageId, setLanguageId] = useState("");
   const [typeOfDev, setTypeOfDev] = useState("");
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const surveyAnswers = {
@@ -26,31 +20,16 @@ export default function UserSurvey() {
       type_of_dev: typeOfDev,
     };
     await createSurvey(surveyAnswers);
-    usersName = username;
-    router.push("/");
-  };
-
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    const id = userData.id;
-    const editSurvey = {
-      username: usersName,
-      age_range: ageRange,
-      industry,
-      language_id: parseInt(languageId, 10),
-      type_of_dev: typeOfDev,
-    };
-    await editUserSurvey(id, editSurvey);
-    router.push({pathname: '/user-results', query: username});
+    router.push({pathname: "/user-results", query: username});
   };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen"> 
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="flex flex-col items-center h-[800px]">
-        <h1 className="font-bold text-6xl">{{usersName} ? 'Edit Survey' : 'Create Survey'}</h1>
+        <h1 className="font-bold text-6xl">Survey</h1>
         <form
           className="grid grid-cols-2 gap-2 w-[600px] mx-auto mt-[100px]"
-          onSubmit={{usersName}? handleSubmit : handleEdit}
-          >
+          onSubmit={handleSubmit}
+        >
           <label htmlFor="username">Username:</label>
           <input
             className="inline-block"
@@ -58,7 +37,7 @@ export default function UserSurvey() {
             type="text"
             placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
-            />
+          />
           <h3>language:</h3>
           <select
             value={languageId}
@@ -111,7 +90,7 @@ export default function UserSurvey() {
             className="bg-purple-600 text-3xl col-span-2 rounded-md box-border p-2 text-gray-50 justify-self-center mt-60"
             type="submit"
           >
-            {{usersName} ? "Edit Survey" : "Submit Survey"}
+            Submit Survey
           </button>
         </form>
       </div>

@@ -53,6 +53,16 @@ export const findUserById = async (userId) => {
     console.error(error.message);
   }
 }
+
+// GET user by username
+export const findUserByName = async (username) => {
+  try {
+    const response = await axios.get(`${apiURL}/api/v1/users/${username}`);
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
 // Sign-up user 
 export const userSignUp = async (newUser) => {
   try {
