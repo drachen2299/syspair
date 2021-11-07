@@ -8,11 +8,13 @@ from db import DATABASE, initialize
 from user import User
 from language import Language
 from author import Author
+from survey import Survey
 
 
 from resources.languages import language
 from resources.users import user
 from resources.authors import author
+from resources.surveys import survey
 DEBUG = True
 PORT = 8000
 
@@ -41,10 +43,11 @@ def index():
 app.register_blueprint(user)
 app.register_blueprint(language)
 app.register_blueprint(author)
+app.register_blueprint(survey)
 origins=['http://localhost:3000']
 
 if 'DATABASE_URL' in os.environ:
-    initialize([User, Language, Author])
+    initialize([User, Language, Author, Survey])
     app.config['SESSION_COOKIE_SECURE'] = True
     app.config['SESSION_COOKIE_HTTPONLY'] = False
     app.config['SESSION_COOKIE_SAMESITE'] = 'None'
@@ -54,5 +57,5 @@ CORS(app, origins=origins, supports_credentials=True)
 
 if __name__ == '__main__':
     print(f'App.py is running on port: {PORT}')
-    initialize([User, Language, Author])
+    initialize([User, Language, Author, Survey])
     app.run(debug=DEBUG, port=PORT)

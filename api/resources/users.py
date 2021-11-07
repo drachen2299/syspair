@@ -3,7 +3,6 @@ from peewee import DoesNotExist
 from playhouse.shortcuts import model_to_dict
 
 from user import User
-from language import Language
 
 user = Blueprint('users', __name__, url_prefix='/api/v1/users')
 
@@ -24,14 +23,14 @@ def get_single_user(id):
     except:
         return jsonify(message="Resource does not exist!"), 404
 #GET one user by name
-@user.route('/<username>', methods=['GET'])
-def get_username(username):
-    try:
-        user = User.get(User.username == username)
-        user_dict = model_to_dict(user)
-        return jsonify(user_dict), 200
-    except DoesNotExist:
-        return jsonify(message="Resource does not exist!"), 404
+# @user.route('/<username>', methods=['GET'])
+# def get_username(username):
+#     try:
+#         user = User.get(User.username == username)
+#         user_dict = model_to_dict(user)
+#         return jsonify(user_dict), 200
+#     except DoesNotExist:
+#         return jsonify(message="Resource does not exist!"), 404
 #PUT by id
 @user.route('/<int:id>', methods= ['PUT'])
 def update_user(id):

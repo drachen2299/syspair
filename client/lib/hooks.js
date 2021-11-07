@@ -1,9 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { findUserByName } from "../services";
-import { userContext } from "./context";
 
 export function useUserData() {
-  const { usersName } = useContext(userContext);
   const [username, setUsername] = useState(null);
   const [usersFullData, setUsersFullData] = useState({});
 
