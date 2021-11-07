@@ -16,7 +16,7 @@ export default function LanguageSelect() {
   }, []);
   const handleClick = (e) => {
     e.preventDefault();
-    router.push({ pathname: "/results", query: { username, language } });
+    router.push({ pathname: "/results", query: {username, language } });
   };
   return (
     <div >
