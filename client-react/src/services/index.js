@@ -56,7 +56,7 @@ export const findUserById = async (userId) => {
 // Sign-up user 
 export const userSignUp = async (newUser) => {
   try {
-    await axios.post(`${apiURL}/api/v1/users/sign-up`, newUser);
+    const response = await axios.post(`${apiURL}/api/v1/users/sign-up`, newUser);
     return response.data;
   } catch (error) {
     console.error(error.message)
