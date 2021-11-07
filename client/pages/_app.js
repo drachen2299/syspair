@@ -1,7 +1,7 @@
 import "tailwindcss/tailwind.css";
 import { userContext } from "../lib/context";
 import Nav from "../components/Nav";
-import { provideAuth } from "./use-auth.js";
+import { provideAuth } from "../lib/use-auth";
 
 function MyApp({ Component, pageProps }) {
   return (

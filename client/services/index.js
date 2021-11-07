@@ -45,22 +45,23 @@ export const findLanguageById = async (langId) => {
 }
 
 // GET user by id
-export const findUserByName = async (usersName) => {
+export const findUserById = async (userId) => {
   try {
-    const response = await axios.get(`${apiURL}/api/v1/users/${usersName}`);
+    const response = await axios.get(`${apiURL}/api/v1/users/${userId}`);
     return response.data;
   } catch (error) {
     console.error(error.message);
   }
 }
-// POST user 
-export const userSignUp = async (userData) => {
+// Sign-up user 
+export const userSignUp = async (newUser) => {
   try {
-    await axios.post(`${apiURL}/api/v1/users/`, userData)
+    await axios.post(`${apiURL}/api/v1/users/`, newUser)
   } catch (error) {
     console.error(error.message)
   }
 }
+
 
 // POST user survey
 export const createSurvey = async (surveyAnswers) => {
