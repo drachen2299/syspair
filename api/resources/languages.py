@@ -22,6 +22,14 @@ def get_single_language(id):
         return jsonify(language), 200
     except:
         return jsonify(message="Resource does not exist!"), 404
+@language.route('/<name>', methods=['GET'])
+def get_languagename(name):
+    try:
+        language = Language.get(Language.name == name)
+        language_dict = model_to_dict(language)
+        return jsonify(language_dict), 200
+    except DoesNotExist:
+        return jsonify(message="Resource does not exist!"), 404
 #PUT by id
 @language.route('/<int:id>', methods= ['PUT'])
 def update_language(id):

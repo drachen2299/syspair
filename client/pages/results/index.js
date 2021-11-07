@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { surveyResults } from "../../services";
+import { surveyResults, findUserByName } from "../../services";
+import { useRouter } from "next/router";
 
 const data = {
   labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -31,36 +32,53 @@ const data = {
 
 export default function Results() {
   const [survey, setSurvey] = useState([]);
-
-  useEffect(() => {
-    surveyResults().then((fetchedSurvey) => setSurvey(fetchedSurvey))
-
-    
-  }, [])
-  console.log(survey)
+  const router = useRouter();
+  const query = Object.values(router.query);
+  const username = query[0];
+  const compareLang = query[1];
+  const [usersName, setUsersName] = useState(null);
+  const [selectedLang, setSelectedLang] = useState({});
+  useEffect(async () => {
+    //await surveyResults().then((fetchedSurvey) => setSurvey(fetchedSurvey));
+    await findUserByName(username).then((fetchedName) => setUsersName(fetchedName));
+    console.log(usersName)
+  }, []);
+  console.log(survey);
+  console.log(query);
   return (
     <div>
       <h2>Bar Example (custom size)</h2>
       <div className="grid grid-cols-2 gap-5">
-        <div className="col-start-1 col-end-2 inline-block">
-          <Bar
-            data={data}
-            width={200}
-            height={100}
-            options={{
-              maintainAspectRatio: true,
-            }}
-          />
+        <div className="col-start-1 col-end-2 w-[45%]">
+          <div>
+            {/* users language language */}
+            <img className="w-9/12" src={usersName?.language_id?.image} alt={usersName.language_id?.image} />
+          </div>
+          <div className="inline-block">
+            <Bar
+              data={data}
+              // width={100}
+              // height={100}
+              options={{
+                maintainAspectRatio: true,
+              }}
+            />
+          </div>
         </div>
-        <div className="col-start-2 col-end-3 inline-block">
-          <Bar
-            data={data}
-            width={400}
-            height={200}
-            options={{
-              maintainAspectRatio: true,
-            }}
-          />
+        <div className="col-start-2 col-end-3">
+          <div>
+            {/* compare too language */}
+          </div>
+          <div className="inline-block">
+            <Bar
+              data={data}
+              // width={400}
+              // height={200}
+              options={{
+                maintainAspectRatio: true,
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
