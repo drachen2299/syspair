@@ -16,15 +16,15 @@ export default function Nav() {
           <>
             <li>
               <Link href={`/${usersName}`}>
-                <button>Edit/Delete Survey</button>
+                <button>User Survey</button>
               </Link>
             </li>
           </>
         )}
         {!usersName && (
         <li>
-          <Link href="/survey">
-            <button>Survey</button>
+          <Link href="/enter">
+            <button>Login</button>
           </Link>
         </li>)}
       </ul>

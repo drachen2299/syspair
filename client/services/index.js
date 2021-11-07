@@ -44,13 +44,21 @@ export const findLanguageById = async (langId) => {
   }
 }
 
-// GET user by username
+// GET user by id
 export const findUserByName = async (usersName) => {
   try {
     const response = await axios.get(`${apiURL}/api/v1/users/${usersName}`);
     return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
+  }
+}
+// POST user 
+export const userSignUp = async (userData) => {
+  try {
+    await axios.post(`${apiURL}/api/v1/users/`, userData)
+  } catch (error) {
+    console.error(error.message)
   }
 }
 
@@ -68,7 +76,7 @@ export const editUserSurvey = async (id, editSurvey) => {
   try {
     await axios.put(`${apiURL}/api/v1/users/${id}`, editSurvey);
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 }
 
@@ -77,6 +85,6 @@ export const deleteUser = async (id) => {
   try {
     await axios.delete(`${apiURL}/api/v1/users/${id}`);
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 }
