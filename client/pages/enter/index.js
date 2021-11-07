@@ -1,4 +1,8 @@
-export default function Page({}) {
+import { useState, useEffect, useContext } from 'react';
+import { userContext } from '../../lib/context'; 
+export default function Page({children}) {
+const { user, username } = useContext(userContext);
+  
   return (
     <div>
       <form action="">

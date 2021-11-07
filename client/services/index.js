@@ -56,13 +56,31 @@ export const findUserById = async (userId) => {
 // Sign-up user 
 export const userSignUp = async (newUser) => {
   try {
-    await axios.post(`${apiURL}/api/v1/users/`, newUser)
+    await axios.post(`${apiURL}/api/v1/users/sign-up`, newUser);
+    return response.data;
   } catch (error) {
     console.error(error.message)
   }
 }
 
+// Login user 
+export const login = async (userData) => {
+  try {
+    const response = await axios.post(`${apiURL}/api/v1/users/login`, userData);
+    return response.data;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 
+// logout user
+export const logout = async () => {
+  try {
+    await axios.get(`${apiURL}/api/v1/users/logout`);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 // POST user survey
 export const createSurvey = async (surveyAnswers) => {
   try {

@@ -7,6 +7,7 @@
   
 
 //   useEffect( () => {
+//     if (user) {
 //     findUserById(userId).then((fetchedUser) => setUser(fetchedUser))
   
 // }
