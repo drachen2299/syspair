@@ -66,10 +66,10 @@
 --         {"username":"blerf31454564578323"}]'
 -- );
 INSERT INTO author (full_name, year_born, nationality, image, created_at)
-VALUES('Guido van Rossum', 1956, 'Dutch', 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Guido-portrait-2014-drc.jpg', now())
+VALUES('Guido van Rossum', 1956, 'Dutch', 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Guido-portrait-2014-drc.jpg', now());
 
 INSERT INTO language (name, year_created, author_id, type, image, created_at)
-VALUES('Python', 1991, 2, 'Strong', 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg', now())
+VALUES('Python', 1991, (SELECT id FROM author WHERE author.full_name = 'Guido van Rossum' LIMIT 1), 'Strong', 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg', now());
 
 --seed authors
 --seed languages

@@ -11,26 +11,33 @@ export default function Edit() {
   const [industry, setIndustry] = useState("");
   const [languageId, setLanguageId] = useState("");
   const [typeOfDev, setTypeOfDev] = useState("");
-  const [user, setUser] = useState(null);
-  console.log(username)
+  const [user, setUser] = useState({});
+  console.log(username);
   useEffect(() => {
-    findUserByName(username).then((fetchedUser) => setUser(fetchedUser));
-    console.log(user)
-    if (user) {
-
-      setUsersName(user?.username);
-      setAgeRange(user?.age_range);
-      setIndustry(user?.industry);
-      setLanguageId(user?.language_id?.id.toString());
-      setTypeOfDev(user?.type_of_dev);
-    }
-    else {
-      return
-    }
+    findUserByName(username).then((fetchedUser) => {
+      setUser(fetchedUser);
+      setUsersName(fetchedUser.username);
+      setAgeRange(fetchedUser.age_range);
+      setIndustry(fetchedUser.industry);
+      setLanguageId(fetchedUser.language_id?.id.toString());
+      setTypeOfDev(fetchedUser.type_of_dev);
+    });
     console.log(user);
-  }, [user]);
-  console.log(user)
-  console.log(languageId,usersName, ageRange, industry, typeOfDev)
+    // if (user) {
+
+    //   setUsersName(user?.username);
+    //   setAgeRange(user?.age_range);
+    //   setIndustry(user?.industry);
+    //   setLanguageId(user?.language_id?.id.toString());
+    //   setTypeOfDev(user?.type_of_dev);
+    // }
+    // else {
+    //   return
+    // }
+    // console.log(user);
+  }, []);
+  console.log(user);
+  console.log(languageId, usersName, ageRange, industry, typeOfDev);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = user.id;
@@ -42,7 +49,7 @@ export default function Edit() {
       type_of_dev: typeOfDev,
     };
     await editUserSurvey(id, editSurvey);
-    router.push({pathname: '/user-results', query: username});
+    router.push({ pathname: "/user-results", query: username });
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
@@ -55,7 +62,7 @@ export default function Edit() {
           <label htmlFor="username">Username:</label>
           <input
             className="inline-block"
-            value={usersName || ''}
+            value={usersName || ""}
             type="text"
             placeholder="username"
             onChange={(e) => setUsersName(e.target.value)}
