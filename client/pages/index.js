@@ -1,21 +1,26 @@
 import Head from "next/head";
 import Link from "next/link";
 
+
 export default function Home() {
+  
   return (
     <>
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div className="flex flex-col items-center justify-center min-h-screen py-2 dark:bg-gray-900 bg-white dark:text-gray-400">
         <Head>
           <title>Syspair</title>
         </Head>
 
         <main className="flex flex-col items-center justify-around w-full flex-1 px-20 text-center space-y-10">
-          <h1 className=" text-4xl sm:text-6xl font-bold">Welcome to Syspair</h1>
+          <h1 className=" text-4xl sm:text-6xl font-bold">
+            Welcome to Syspair
+          </h1>
           <div className="items-center justify-center max-w-4xl mt-6 sm:w-full">
             <p>
-              Syspair is a tool, that allows you to compare to programming languages. it
-              will aggregate data based on other users responses - and give you
-              a breakdown of each languages strengths and weaknesses.
+              Syspair is a tool, that allows you to compare to programming
+              languages. it will aggregate data based on other users responses -
+              and give you a breakdown of each languages strengths and
+              weaknesses.
             </p>
           </div>
           <div className="items-center justify-center max-w-4xl mt-6 sm:w-full space-y-10">

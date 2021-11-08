@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+    body {
+        @apply dark:bg-gray-900 bg-white dark:text-gray-400;
+    }
     button {
         @apply bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50;
     }
     input,
     option {
-        @apply text-center;
+        @apply text-center dark:bg-gray-500;
+
     }
     @media (min-width: 320px) {
         form {
