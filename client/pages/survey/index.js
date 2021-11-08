@@ -23,11 +23,11 @@ export default function UserSurvey() {
     router.push({pathname: "/user-results", query: username});
   };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen text-center">
       <div className="flex flex-col items-center h-[800px]">
         <h1 className="font-bold text-6xl">Survey</h1>
         <form
-          className="grid grid-cols-2 gap-2 w-[600px] mx-auto mt-[100px]"
+          className="flex flex-col sm:grid sm:grid-cols-2 sm:gap-6 p-1 sm:w-[600px] mx-auto mt-[100px]"
           onSubmit={handleSubmit}
         >
           <label htmlFor="username">Username:</label>
@@ -87,7 +87,7 @@ export default function UserSurvey() {
           </select>
 
           <button
-            className="bg-purple-600 text-3xl col-span-2 rounded-md box-border p-2 text-gray-50 justify-self-center mt-60"
+            className="bg-purple-600 text-3xl col-span-2 rounded-md box-border p-2 text-gray-50 justify-self-center"
             type="submit"
           >
             Submit Survey

@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    button {
+        @apply bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50;
+    }
+    input,
+    option {
+        @apply text-center;
+    }
+    @media (min-width: 320px) {
+        form {
+            @apply space-y-5;
+        }
+      }
+}

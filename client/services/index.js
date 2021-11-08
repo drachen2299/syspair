@@ -63,6 +63,16 @@ export const findUserByName = async (username) => {
     console.log(error.message);
   }
 }
+
+// find language selected
+export const findLanguageByName = async (language) => {
+  try {
+    const response = await axios.get(`${apiURL}/api/v1/languages/${language}`);
+    return response.data;
+  } catch (error) {
+    console.error(error.message)
+  }
+}
 // Sign-up user 
 export const userSignUp = async (newUser) => {
   try {

@@ -11,18 +11,25 @@ export default function Edit() {
   const [industry, setIndustry] = useState("");
   const [languageId, setLanguageId] = useState("");
   const [typeOfDev, setTypeOfDev] = useState("");
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
+  console.log(username)
+  useEffect(() => {
+    findUserByName(username).then((fetchedUser) => setUser(fetchedUser));
+    if (user) {
 
-  useEffect(async () => {
-    await findUserByName(username)
-    .then((fetchedUser) => setUser(fetchedUser));
-    setUsersName(user.username);
-    setAgeRange(user.age_range);
-    setIndustry(user.industry);
-    setLanguageId(user.language_id?.id.toString());
-    setTypeOfDev(user.type_of_dev);
+      setUsersName(user?.username);
+      setAgeRange(user?.age_range);
+      setIndustry(user?.industry);
+      setLanguageId(user?.language_id?.id.toString());
+      setTypeOfDev(user?.type_of_dev);
+    }
+    else {
+      return
+    }
+    console.log(user);
   }, []);
-
+  console.log(user)
+  console.log(languageId,usersName, ageRange, industry, typeOfDev)
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = user.id;
@@ -41,7 +48,7 @@ export default function Edit() {
       <div className="flex flex-col items-center h-[800px]">
         <h1 className="font-bold text-6xl">Survey</h1>
         <form
-          className="grid grid-cols-2 gap-2 w-[600px] mx-auto mt-[100px]"
+          className=" text-center flex flex-col md:grid md:grid-cols-2 md:gap-2 p-1 md:w-[600px] mx-auto mt-[100px]"
           onSubmit={handleSubmit}
         >
           <label htmlFor="username">Username:</label>
@@ -109,7 +116,7 @@ export default function Edit() {
           </select>
 
           <button
-            className="bg-purple-600 text-3xl col-span-2 rounded-md box-border p-2 text-gray-50 justify-self-center mt-60"
+            className="bg-purple-600 text-3xl col-span-2 rounded-md box-border p-2 text-gray-50 justify-self-center"
             type="submit"
           >
             Edit Survey

@@ -9,7 +9,7 @@ export default function Home() {
         <title>Syspair</title>
       </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+      <main className="flex flex-col items-center justify-around w-full flex-1 px-20 text-center space-y-48">
         <h1 className="text-6xl font-bold">
           Welcome to{' '}
           Syspair
@@ -17,7 +17,7 @@ export default function Home() {
         <div className="items-center justify-center max-w-4xl mt-6 sm:w-full">
           <h3>take the survey!</h3>
           <Link href="/survey" passHref>
-          <button className="bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50 justify-self-center mt-60">
+          <button className="bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50 justify-self-center">
             Take the survey!
           </button>
         </Link>

@@ -1,29 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { surveyResults, findUserByName } from "../../services";
+import { surveyResults, findUserByName, findLanguageByName } from "../../services";
 import { useRouter } from "next/router";
 
 const data = {
-  labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+  labels: ["popularity", "Age Range", "Industry", "Dev Type"],
   datasets: [
     {
-      label: "# of Votes",
+      label: "Language",
       data: [12, 19, 3, 5, 2, 3],
       backgroundColor: [
         "rgba(255, 99, 132, 0.2)",
         "rgba(54, 162, 235, 0.2)",
         "rgba(255, 206, 86, 0.2)",
         "rgba(75, 192, 192, 0.2)",
-        "rgba(153, 102, 255, 0.2)",
-        "rgba(255, 159, 64, 0.2)",
       ],
       borderColor: [
         "rgba(255, 99, 132, 1)",
         "rgba(54, 162, 235, 1)",
         "rgba(255, 206, 86, 1)",
         "rgba(75, 192, 192, 1)",
-        "rgba(153, 102, 255, 1)",
-        "rgba(255, 159, 64, 1)",
+      ],
+      borderWidth: 1,
+    },
+    {
+      label: "Language#2",
+      data: [15, 21, 5, 7, 4, 5],
+      backgroundColor: [
+        "rgba(255, 99, 132, 0.2)",
+        "rgba(54, 162, 235, 0.2)",
+        "rgba(255, 206, 86, 0.2)",
+        "rgba(75, 192, 192, 0.2)",
+      ],
+      borderColor: [
+        "rgba(255, 99, 132, 1)",
+        "rgba(54, 162, 235, 1)",
+        "rgba(255, 206, 86, 1)",
+        "rgba(75, 192, 192, 1)",
       ],
       borderWidth: 1,
     },
@@ -37,51 +50,50 @@ export default function Results() {
   const username = query[0];
   const compareLang = query[1];
   const [usersName, setUsersName] = useState(null);
-  const [selectedLang, setSelectedLang] = useState({});
+  const [selectedLang, setSelectedLang] = useState(null);
   console.log(username)
   useEffect(async () => {
     //await surveyResults().then((fetchedSurvey) => setSurvey(fetchedSurvey));
     await findUserByName(username).then((fetchedName) => setUsersName(fetchedName));
+    await findLanguageByName(compareLang).then((fetchedName) => setSelectedLang(fetchedName));
+    console.log(selectedLang);
     console.log(usersName)
   }, []);
   console.log(survey);
   console.log(query);
   return (
-    <div>
-      <h2>Bar Example (custom size)</h2>
-      <div className="grid grid-cols-2 gap-5">
-        <div className="col-start-1 col-end-2 w-[45%]">
-          <div>
+    <div className="text-center sm:space-y-10">
+      <h1 className="text-6xl font-bold">
+          Syspair
+        </h1>
+        <h3 className="text-4xl font-bold">{usersName?.language_id?.name} VS {selectedLang?.name}</h3>
+      <div className=" flex flex-col md:grid md:grid-cols-2 md:gap-5 md:gap-y-5 mx-auto lg:w-[800px] text-center sm:space-y-10">
+        
+          <div className="md:col-start-1 md:col-end-2">
             {/* users language language */}
-            <img className="w-9/12" src={usersName?.language_id?.image} alt={usersName?.language_id?.image} />
+            <h1>{usersName?.language_id?.name}</h1>
+            <img className="w-[200px] h-[200px] mx-auto" src={usersName?.language_id?.image} alt={usersName?.language_id?.image} />
           </div>
-          <div className="inline-block">
-            <Bar
-              data={data}
-              // width={100}
-              // height={100}
-              options={{
-                maintainAspectRatio: true,
-              }}
-            />
-          </div>
-        </div>
-        <div className="col-start-2 col-end-3">
-          <div>
+          
+        
+        
+          <div className="md:col-start-2 md:col-end-3">
             {/* compare too language */}
+            <h1>{selectedLang?.name}</h1>
+            <img className="w-[200px] h-[200px] mx-auto" src={selectedLang?.image} alt={selectedLang?.name} />
           </div>
-          <div className="inline-block">
+          <div className="inline-block sm:col-start-1 sm:col-end-3">
             <Bar
               data={data}
-              // width={400}
-              // height={200}
+              width={300}
+              height={150}
               options={{
-                maintainAspectRatio: true,
+                maintainAspectRatio: false,
               }}
             />
           </div>
         </div>
       </div>
-    </div>
+    
   );
 }

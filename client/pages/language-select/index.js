@@ -20,11 +20,11 @@ export default function LanguageSelect() {
   };
   return (
     <div >
-      <form className="grid grid-cols-3 grid-rows-2 w-[900px] mx-auto" onSubmit={handleClick}>
+      <form className=" sm:grid sm:grid-cols-3 sm:grid-rows-2 sm:w-[500px] md:w-[600px] lg:[800px] mx-auto text-center" onSubmit={handleClick}>
         {languages.map((language) => (
           <div>
             <img
-              className="w-[200px] h-[200px]"
+              className="w-[200px] h-[200px] mx-auto"
               value={language.name}
               src={language.image}
               alt={`${language.name} Programming Language`}
@@ -37,7 +37,7 @@ export default function LanguageSelect() {
               
           </div>
         ))}
-        <button type="submit">Compare</button>
+        <button className="sm:col-start-2 sm:col-end-3" type="submit">Compare</button>
       </form>
       {console.log(language)}
     </div>

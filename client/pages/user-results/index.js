@@ -26,7 +26,7 @@ export default function UserResults() {
   };
   console.log(user);
   return (
-    <div className="flex flex-col w-[600px] mx-auto justify-center text-center">
+    <div className="flex flex-col sm:w-[600px] mx-auto justify-center text-center space-y-8 mt-3">
       <h1 className="text-6xl font-bold">Syspair</h1>
       <h2>Here are your answers:</h2>
       {/*return results of the POST request */}
@@ -37,7 +37,7 @@ export default function UserResults() {
       <h3>Employment Status: {user.type_of_dev}</h3>
 
       <p>are you happy with these results?</p>
-      <div className=" mt-60">
+      <div>
         <button
           className="m-2 bg-purple-600 text-3xl rounded-md box-border p-2 text-gray-50"
           onClick={handleEditClick}
