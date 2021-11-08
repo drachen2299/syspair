@@ -65,12 +65,41 @@
 --         {"username":"blerf3145235676845"},
 --         {"username":"blerf31454564578323"}]'
 -- );
+-- INSERT INTO author (full_name, year_born, nationality, image, created_at)
+-- VALUES('Guido van Rossum', 1956, 'Dutch', 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Guido-portrait-2014-drc.jpg', now());
+
+-- INSERT INTO language (name, year_created, author_id, type, image, created_at)
+-- VALUES('Python', 1991, (SELECT id FROM author WHERE author.full_name = 'Guido van Rossum' LIMIT 1), 'Strong', 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg', now());
+
 INSERT INTO author (full_name, year_born, nationality, image, created_at)
-VALUES('Guido van Rossum', 1956, 'Dutch', 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Guido-portrait-2014-drc.jpg', now());
+VALUES('Yukihiro Matsumoto', 1965, 'Japanese', 'https://upload.wikimedia.org/wikipedia/commons/7/76/Yukihiro_Matsumoto.JPG', now());
 
 INSERT INTO language (name, year_created, author_id, type, image, created_at)
-VALUES('Python', 1991, (SELECT id FROM author WHERE author.full_name = 'Guido van Rossum' LIMIT 1), 'Strong', 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg', now());
+VALUES('Ruby', 1995, (SELECT id FROM author WHERE author.full_name = 'Yukihiro Matsumoto' LIMIT 1), 'Strong', 'hhttps://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg', now());
 
+INSERT INTO author (full_name, year_born, nationality, image, created_at)
+VALUES('James Gosling', 1955, 'Canada', 'https://upload.wikimedia.org/wikipedia/commons/1/14/James_Gosling_2008.jpg', now());
+
+INSERT INTO language (name, year_created, author_id, type, image, created_at)
+VALUES('Java', 1995, (SELECT id FROM author WHERE author.full_name = 'James Gosling' LIMIT 1), 'Strong', 'https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg', now());
+
+INSERT INTO author (full_name, year_born, nationality, image, created_at)
+VALUES('Brendan Eich', 1961, 'USA', 'https://upload.wikimedia.org/wikipedia/commons/1/1d/Brendan_Eich.png', now());
+
+INSERT INTO language (name, year_created, author_id, type, image, created_at)
+VALUES('Javascript', 1995, (SELECT id FROM author WHERE author.full_name = 'Brendan Eich' LIMIT 1), 'Weak', 'https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg', now());
+
+INSERT INTO author (full_name, year_born, nationality, image, created_at)
+VALUES('Anders Hejlsberg', 1960, 'Danish', 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Anders_Hejlsberg.jpg', now());
+
+INSERT INTO language (name, year_created, author_id, type, image, created_at)
+VALUES('CSharp', 2000, (SELECT id FROM author WHERE author.full_name = 'Anders Hejlsberg' LIMIT 1), 'Strong', 'https://upload.wikimedia.org/wikipedia/commons/0/0d/C_Sharp_wordmark.svg', now());
+
+INSERT INTO author (full_name, year_born, nationality, image, created_at)
+VALUES('Graydon Hoare', 1979, 'USA', 'https://everipedia-storage.s3.amazonaws.com/ProfilePicture/en/graydon-hoare__3f5731_medium.webp', now());
+
+INSERT INTO language (name, year_created, author_id, type, image, created_at)
+VALUES('Rust', 1991, (SELECT id FROM author WHERE author.full_name = 'Graydon Hoare' LIMIT 1), 'Strong', 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Rust_programming_language_black_logo.svg', now());
 --seed authors
 --seed languages
 --seed surveys

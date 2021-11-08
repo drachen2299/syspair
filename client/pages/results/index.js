@@ -84,7 +84,7 @@ const data = {
           Syspair
         </h1>
         <h3 className="text-4xl font-bold">{usersName?.language_id?.name} VS {selectedLang?.name}</h3>
-      <div className=" flex flex-col md:grid md:grid-cols-2 md:gap-5 md:gap-y-5 mx-auto lg:w-[800px] text-center sm:space-y-10 h-screen">
+      <div className=" flex flex-col md:grid md:grid-cols-2 md:gap-5 md:gap-y-5 mx-auto lg:w-[800px] text-center h-screen">
         
           <div className="md:col-start-1 md:col-end-2">
             {/* users language language */}
