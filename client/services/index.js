@@ -1,9 +1,10 @@
 import axios from "axios";
 
 const apiURL =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:8000"
-    : "https://syspair.herokuapp.com";
+  // process.env.NODE_ENV === "development"
+  //   ? "http://localhost:8000"
+  //  :
+     "https://syspair.herokuapp.com";
 
 
 export const defaultRoute = async () => {
