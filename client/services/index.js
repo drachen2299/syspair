@@ -1,11 +1,6 @@
 import axios from "axios";
 
-const apiURL =
-  // process.env.NODE_ENV === "development"
-  //   ? "http://localhost:8000"
-  //  :
-     "https://syspair.herokuapp.com";
-
+const apiURL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
 export const defaultRoute = async () => {
   try {
@@ -14,7 +9,7 @@ export const defaultRoute = async () => {
   } catch (error) {
     console.error(error.message);
   }
-}
+};
 
 // GET all users
 export const surveyResults = async () => {
@@ -24,26 +19,26 @@ export const surveyResults = async () => {
   } catch (error) {
     console.error(error.message);
   }
-}
+};
 
 // GET languages
 export const getAllLanguages = async () => {
   try {
-    const response = await axios.get(`${apiURL}/api/v1/languages`)
+    const response = await axios.get(`${apiURL}/api/v1/languages`);
     return response.data;
   } catch (error) {
-    console.error(error.message)
+    console.error(error.message);
   }
-}
+};
 // GET language by id
 export const findLanguageById = async (langId) => {
   try {
-    const response = await axios.get(`${apiURL}/api/v1/languages/${langId}`)
+    const response = await axios.get(`${apiURL}/api/v1/languages/${langId}`);
     return response.data;
   } catch (error) {
-    console.error(error.message)
+    console.error(error.message);
   }
-}
+};
 
 // GET user by id
 export const findUserById = async (userId) => {
@@ -53,7 +48,7 @@ export const findUserById = async (userId) => {
   } catch (error) {
     console.error(error.message);
   }
-}
+};
 
 // GET user by username
 export const findUserByName = async (username) => {
@@ -63,7 +58,7 @@ export const findUserByName = async (username) => {
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 // find language selected
 export const findLanguageByName = async (language) => {
@@ -71,20 +66,20 @@ export const findLanguageByName = async (language) => {
     const response = await axios.get(`${apiURL}/api/v1/languages/${language}`);
     return response.data;
   } catch (error) {
-    console.error(error.message)
+    console.error(error.message);
   }
-}
-// Sign-up user 
+};
+// Sign-up user
 export const userSignUp = async (newUser) => {
   try {
     await axios.post(`${apiURL}/api/v1/users/sign-up`, newUser);
     return response.data;
   } catch (error) {
-    console.error(error.message)
+    console.error(error.message);
   }
-}
+};
 
-// Login user 
+// Login user
 export const login = async (userData) => {
   try {
     const response = await axios.post(`${apiURL}/api/v1/users/login`, userData);
@@ -92,7 +87,7 @@ export const login = async (userData) => {
   } catch (error) {
     console.error(error.message);
   }
-}
+};
 
 // logout user
 export const logout = async () => {
@@ -101,7 +96,7 @@ export const logout = async () => {
   } catch (error) {
     console.error(error.message);
   }
-}
+};
 // POST user survey
 export const createSurvey = async (surveyAnswers) => {
   try {
@@ -109,7 +104,7 @@ export const createSurvey = async (surveyAnswers) => {
   } catch (error) {
     console.error(error.message);
   }
-}
+};
 
 // PUT user survey
 export const editUserSurvey = async (id, editSurvey) => {
@@ -118,7 +113,7 @@ export const editUserSurvey = async (id, editSurvey) => {
   } catch (error) {
     console.error(error.message);
   }
-}
+};
 
 // DELETE user survey
 export const deleteUser = async (id) => {
@@ -127,4 +122,4 @@ export const deleteUser = async (id) => {
   } catch (error) {
     console.error(error.message);
   }
-}
+};
