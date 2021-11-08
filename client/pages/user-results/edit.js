@@ -28,7 +28,7 @@ export default function Edit() {
       return
     }
     console.log(user);
-  }, []);
+  }, [user]);
   console.log(user)
   console.log(languageId,usersName, ageRange, industry, typeOfDev)
   const handleSubmit = async (e) => {
