@@ -73,6 +73,9 @@ export default function Results() {
             {/* users language language */}
             <h1>{usersName?.language_id?.name}</h1>
             <img className="w-[200px] h-[200px] mx-auto" src={usersName?.language_id?.image} alt={usersName?.language_id?.image} />
+            <h2>{usersName?.language_id?.year_created}</h2>
+            <h2>{usersName?.language_id?.author_id?.full_name}</h2>
+            <h2>{usersName?.language_id?.type}</h2>
           </div>
           
         
@@ -81,6 +84,9 @@ export default function Results() {
             {/* compare too language */}
             <h1>{selectedLang?.name}</h1>
             <img className="w-[200px] h-[200px] mx-auto" src={selectedLang?.image} alt={selectedLang?.name} />
+            <h2>{selectedLang?.year_created}</h2>
+            <h2>{selectedLang?.author_id?.full_name}</h2>
+            <h2>{selectedLang?.type}</h2>
           </div>
           <div className="inline-block sm:col-start-1 sm:col-end-3">
             <Bar

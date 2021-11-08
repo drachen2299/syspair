@@ -1,4 +1,4 @@
-import { useRouter, useParams } from "next/router";
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { findUserByName, editUserSurvey } from "../../services";
 
@@ -15,6 +15,7 @@ export default function Edit() {
   console.log(username)
   useEffect(() => {
     findUserByName(username).then((fetchedUser) => setUser(fetchedUser));
+    console.log(user)
     if (user) {
 
       setUsersName(user?.username);
