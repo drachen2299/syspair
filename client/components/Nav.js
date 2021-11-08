@@ -23,7 +23,7 @@ export default function Nav() {
             </Link>
           </li><li>
               <a href="https://github.com/drachen2299/syspair">
-                <img src="../../../public/iconmonstr-github-1.svg" alt="Github" />
+                <img src="../../public/iconmonstr-github-1.svg" alt="Github" />
               </a>
             </li></>
         )}
