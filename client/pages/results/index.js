@@ -1,14 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar, Doughnut } from "react-chartjs-2";
 import { surveyResults, findUserByName, findLanguageByName } from "../../services";
 import { useRouter } from "next/router";
-
+const doughnutData = {
+  labels: ['20-40', '40-60'],
+  datasets: [
+    {
+      data: [64, 36],
+      backgroundColor: [
+        "rgba(255, 99, 132, 0.2)",
+        "rgba(54, 162, 235, 0.2)",
+      ],
+      borderColor: [
+        "rgba(255, 99, 132, 1)",
+        "rgba(54, 162, 235, 1)",
+      ],
+      borderWidth: 1,
+    }
+  ]
+}
 const data = {
   labels: ["popularity", "Age Range", "Industry", "Dev Type"],
   datasets: [
     {
       label: "Language",
-      data: [12, 19, 3, 5, 2, 3],
+      data: [48, 49, 56, 42],
       backgroundColor: [
         "rgba(255, 99, 132, 0.2)",
         "rgba(54, 162, 235, 0.2)",
@@ -25,7 +41,7 @@ const data = {
     },
     {
       label: "Language#2",
-      data: [15, 21, 5, 7, 4, 5],
+      data: [80, 25, 35, 47],
       backgroundColor: [
         "rgba(255, 99, 132, 0.2)",
         "rgba(54, 162, 235, 0.2)",
@@ -67,12 +83,12 @@ export default function Results() {
           Syspair
         </h1>
         <h3 className="text-4xl font-bold">{usersName?.language_id?.name} VS {selectedLang?.name}</h3>
-      <div className=" flex flex-col md:grid md:grid-cols-2 md:gap-5 md:gap-y-5 mx-auto lg:w-[800px] text-center sm:space-y-10">
+      <div className=" flex flex-col md:grid md:grid-cols-2 md:gap-5 md:gap-y-5 mx-auto lg:w-[800px] text-center sm:space-y-10 h-screen">
         
           <div className="md:col-start-1 md:col-end-2">
             {/* users language language */}
             <h1>{usersName?.language_id?.name}</h1>
-            <img className="w-[200px] h-[200px] mx-auto" src={usersName?.language_id?.image} alt={usersName?.language_id?.image} />
+            <img className="w-64 h-64 mx-auto" src={usersName?.language_id?.image} alt={usersName?.language_id?.image} />
             <h2>{usersName?.language_id?.year_created}</h2>
             <h2>{usersName?.language_id?.author_id?.full_name}</h2>
             <h2>{usersName?.language_id?.type}</h2>
@@ -83,20 +99,18 @@ export default function Results() {
           <div className="md:col-start-2 md:col-end-3">
             {/* compare too language */}
             <h1>{selectedLang?.name}</h1>
-            <img className="w-[200px] h-[200px] mx-auto" src={selectedLang?.image} alt={selectedLang?.name} />
+            <img className="w-64 h-64 mx-auto" src={selectedLang?.image} alt={selectedLang?.name} />
             <h2>{selectedLang?.year_created}</h2>
             <h2>{selectedLang?.author_id?.full_name}</h2>
             <h2>{selectedLang?.type}</h2>
           </div>
-          <div className="inline-block sm:col-start-1 sm:col-end-3">
+          <div className="inline-block sm:col-start-1 sm:col-end-3 h-auto w-screen mx-auto">
             <Bar
               data={data}
-              width={300}
-              height={150}
-              options={{
-                maintainAspectRatio: false,
-              }}
             />
+          </div>
+          <div className="inline-block mx-auto sm:col-start-1 sm:col-end-3">
+            <Doughnut data={doughnutData}/>
           </div>
         </div>
       </div>

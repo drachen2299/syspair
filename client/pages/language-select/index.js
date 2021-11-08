@@ -24,7 +24,7 @@ export default function LanguageSelect() {
         {languages.map((language) => (
           <div>
             <img
-              className="w-[200px] h-[200px] mx-auto"
+              className=" w-48 h-48 mx-auto"
               value={language.name}
               src={language.image}
               alt={`${language.name} Programming Language`}
