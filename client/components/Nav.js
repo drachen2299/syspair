@@ -17,11 +17,15 @@ export default function Nav() {
           </>
         )}
         {!username && (
-          <li>
+          <><li>
             <Link href="/survey">
               <button>Survey</button>
             </Link>
-          </li>
+          </li><li>
+              <a href="https://github.com/drachen2299/syspair">
+                <img src="../../../public/iconmonstr-github-1.svg" alt="Github" />
+              </a>
+            </li></>
         )}
       </ul>
     </nav>
