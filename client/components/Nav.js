@@ -4,7 +4,7 @@ export default function Nav() {
   const username = null;
   return (
     <nav>
-      <ul className=" box-border p-1 inline-block flex justify-between w-[100%]">
+      <ul className=" box-border p-1 flex justify-between w-[100%]">
         <li>
           <Link href="/">
             <button>Home</button>
