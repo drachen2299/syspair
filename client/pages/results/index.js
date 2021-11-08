@@ -2,7 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Bar, Doughnut } from "react-chartjs-2";
 import { surveyResults, findUserByName, findLanguageByName } from "../../services";
 import { useRouter } from "next/router";
-const doughnutData = {
+
+
+export default function Results() {
+  const [survey, setSurvey] = useState([]);
+  const router = useRouter();
+  const query = Object.values(router.query);
+  const username = query[0];
+  const compareLang = query[1];
+  const [usersName, setUsersName] = useState(null);
+  const [selectedLang, setSelectedLang] = useState(null);
+  console.log(username)
+  const doughnutData = {
   labels: ['20-40', '40-60'],
   datasets: [
     {
@@ -58,16 +69,6 @@ const data = {
     },
   ],
 };
-
-export default function Results() {
-  const [survey, setSurvey] = useState([]);
-  const router = useRouter();
-  const query = Object.values(router.query);
-  const username = query[0];
-  const compareLang = query[1];
-  const [usersName, setUsersName] = useState(null);
-  const [selectedLang, setSelectedLang] = useState(null);
-  console.log(username)
   useEffect(async () => {
     //await surveyResults().then((fetchedSurvey) => setSurvey(fetchedSurvey));
     await findUserByName(username).then((fetchedName) => setUsersName(fetchedName));
