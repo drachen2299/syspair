@@ -2,6 +2,7 @@ import axios from "axios";
 import next from "next";
 
 // const apiURL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+// change fuck 
 
 const apiURL = process.env.PROD_URL;
 export const defaultRoute = async () => {
